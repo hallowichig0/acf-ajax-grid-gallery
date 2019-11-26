@@ -7,6 +7,9 @@
  * Author URI: http://jegson.herokuapp.com
  */
 
+// exit if accessed directly
+if( ! defined( 'ABSPATH' ) ) exit;
+
 define( 'AAGG__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'AAGG__PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
