@@ -1,9 +1,9 @@
 === ACF Ajax Grid Gallery ===
 Contributors: hallowichig0
-Tags: acf, advanced, custom, flexible content, photo, gallery
+Tags: acf, advanced, custom, flexible content, photo, gallery, lightbox, ajax
 Requires at least: 3.8
 Tested up to: 5.2.1
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,12 +17,13 @@ A lightweight extension of Advanced Custom Field (ACF) that adds **grid gallery*
 * Add multiple flexible grid gallery.
 * Add multiple photos for each grid gallery fields.
 * Assign your fields to multiple edit pages (via shortcodes)
+* Option to enable lightbox and ajax loadmore.
 
 = Note =
 This plugin is require of ACF Flexible Content Pro. This plugin doesn't require a coding knowledge. You will just need to copy, paste and edit the id of the shortcode.
 
 = Usage =
-[acf_ajax_grid_gallery id="1"] is a shortcode function. Using this will allow you to display the grid gallery that you created in the "ACF Ajax Grid Gallery Option Menu".
+[acf_ajax_grid_gallery] is a shortcode function. Using this will allow you to display the grid gallery that you created in the "ACF Ajax Grid Gallery Option Menu".
 
 == How to use ==
 
@@ -42,9 +43,14 @@ Just like any other WordPress plugin, this plugin can also cause issues with oth
 == Installation ==
 
 1. Copy the `acf-ajax-grid-gallery` folder into your `wp-content/plugins` folder
-2. Activate the ACF Ajax Grid Gallery plugin via the plugins admin page
+2. Activate the Advanced Custom Fields: Photo Gallery plugin via the plugins admin page
 3. Please refer to the description for more info regarding the field type settings
 
 == Changelog ==
 = 1.0.0 =
 * Initial Release.
+
+= 1.1.0 =
+* [Bugfix] Undefined index: acf-photo-gallery-field on file acf-photo_gallery-v4
+* [Bugfix] When delete the photos from the gallery, the last photo was not deleting
+* [Bugfix] Gallery photos was not saving in the database

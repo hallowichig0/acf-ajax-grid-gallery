@@ -2,7 +2,7 @@
 /**
  * Plugin Name: ACF Ajax Grid Gallery
  * Description: An extension for Advance Custom Fields Pro which lets you add multiple grid gallery with lightbox and ajax loadmore setting.
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: Jayson Garcia (Github - hallowichig0)
  * Author URI: http://jegson.herokuapp.com
  */
@@ -21,7 +21,13 @@ add_action('init', 'acf_ajax_grid_gallery');
 function acf_ajax_grid_gallery_enqueue() {
 
     // styles
+    wp_enqueue_style( 'venobox-style', AAGG__PLUGIN_URL . '/assets/venobox/venobox/venobox.css' );
     wp_enqueue_style( 'aagg-style', AAGG__PLUGIN_URL . 'acf_ajax_grid_gallery.css' );
+
+    // scripts
+    wp_enqueue_script( 'venobox-script', AAGG__PLUGIN_URL . '/assets/venobox/venobox/venobox.min.js','','',true  );
+    wp_enqueue_script( 'infinite-scroll-js', AAGG__PLUGIN_URL . '/assets/infinite-scroll/dist/infinite-scroll.pkgd.min.js','','',true );
+    wp_enqueue_script( 'aagg-js', AAGG__PLUGIN_URL . '/js/acf_ajax_grid_gallery.js','','',true );
 
 }
 add_action( 'wp_enqueue_scripts', 'acf_ajax_grid_gallery_enqueue' );

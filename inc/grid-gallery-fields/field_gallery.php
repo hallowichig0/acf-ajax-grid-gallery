@@ -90,6 +90,69 @@ acf_add_local_field_group(array(
                     'parent_layout' => 'optionAAGGallery_main_flexible_layout1_key',
                 ));
 
+                acf_add_local_field(array(
+                    'key'          => 'optionAAGGallery_grid_subfield1_tab2_key',
+                    'label'        => 'Switch Lightbox',
+                    'instructions' => 'Enable lightbox for each images.',
+                    'name'         => 'optionAAGGallery_grid_subfield1_tab2',
+                    'type'         => 'true_false',
+                    'parent'       => 'optionAAGGallery_main_flexible_field_key', //flexible field key
+                    'parent_layout'=> 'optionAAGGallery_main_flexible_layout1_key', // layout key
+                ));
+
+                acf_add_local_field(array(
+                    'key'          => 'optionAAGGallery_grid_subfield2_tab2_key',
+                    'label'        => 'Add Unique Name',
+                    'instructions' => 'Make sure the unique name that you will input is not the same in the other grid gallery ',
+                    'required' => 1,
+                    'name'         => 'optionAAGGallery_grid_subfield2_tab2',
+                    'type'         => 'text',
+                    'conditional_logic' => array(
+                        array(
+                            array(
+                                'field' => 'optionAAGGallery_grid_subfield1_tab2_key',
+                                'operator' => '==',
+                                'value' => '1',
+                            ),
+                        ),
+                    ),
+                    'parent'       => 'optionAAGGallery_main_flexible_field_key', //flexible field key
+                    'parent_layout'=> 'optionAAGGallery_main_flexible_layout1_key', // layout key
+                ));
+
+                // Infinite Scroll Ajax
+                acf_add_local_field(array(
+                    'key'          => 'optionAAGGallery_grid_subfield3_tab2_key',
+                    'label'        => 'Switch Ajax Loadmore',
+                    'instructions' => 'Turn on this loadmore will divide photos into the number you input in the "Limit Image Per Page Field" and show the view more button.',
+                    'name'         => 'optionAAGGallery_grid_subfield3_tab2',
+                    'type'         => 'true_false',
+                    'parent'       => 'optionAAGGallery_main_flexible_field_key', //flexible field key
+                    'parent_layout'=> 'optionAAGGallery_main_flexible_layout1_key', // layout key
+                ));
+
+                // Infinite Scroll Limit Image Per Page
+                acf_add_local_field(array(
+                    'key'          => 'optionAAGGallery_grid_subfield4_tab2_key',
+                    'label'        => 'Limit Image Per Page',
+                    'instructions' => 'Enter the number you want to load the image per view',
+                    'name'         => 'optionAAGGallery_grid_subfield4_tab2',
+                    'type'         => 'number',
+                    'parent'       => 'optionAAGGallery_main_flexible_field_key', //flexible field key
+                    'parent_layout'=> 'optionAAGGallery_main_flexible_layout1_key', // layout key
+                    'min'          => '1',
+                    'max'          => '12',
+                    'conditional_logic' => array(
+                        array(
+                            array(
+                                'field' => 'optionAAGGallery_grid_subfield3_tab2_key',
+                                'operator' => '==',
+                                'value' => '1',
+                            ),
+                        ),
+                    ),
+                ));
+
                 // Add Class
                 acf_add_local_field(array(
                     'key'          => 'optionAAGGallery_grid_subfield5_tab2_key',
