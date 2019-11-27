@@ -51,6 +51,4 @@ Just like any other WordPress plugin, this plugin can also cause issues with oth
 * Initial Release.
 
 = 1.1.0 =
-* [Bugfix] Undefined index: acf-photo-gallery-field on file acf-photo_gallery-v4
-* [Bugfix] When delete the photos from the gallery, the last photo was not deleting
-* [Bugfix] Gallery photos was not saving in the database
+* [Features] Added Lightbox & Ajax Loadmore Settings
