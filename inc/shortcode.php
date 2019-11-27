@@ -22,6 +22,31 @@ if(class_exists('ACF')){
                     if( get_row_layout() == 'optionAAGGallery_main_flexible_layout1' ){
                         if($count == $id){
 
+                            // Pagination Variables
+                            $grid_gallery_ajaxload = get_sub_field('optionAAGGallery_grid_subfield3_tab2', 'option');
+
+                            if($grid_gallery_ajaxload){
+
+                                if( get_query_var('page') ) {
+                                    $grid_gallery_page = get_query_var( 'page' );
+                                }else {
+                                    $grid_gallery_page = 1;
+                                }
+                                
+                                $grid_gallery_row = 0;
+                                $grid_gallery_image_per_page = get_sub_field('optionAAGGallery_grid_subfield4_tab2', 'option'); // How many images to display on each page
+                                $gridGallery_flexible_field = get_sub_field('optionAAGGallery_grid_flexible_field1', 'option');
+                                $grid_gallery_total_items = count( $gridGallery_flexible_field );
+                                $grid_gallery_total_pages = ceil( $grid_gallery_total_items / $grid_gallery_image_per_page );
+                                $grid_gallery_min = ( ( $grid_gallery_page * $grid_gallery_image_per_page ) - $grid_gallery_image_per_page ) + 1;
+                                $grid_gallery_max = ( $grid_gallery_min + $grid_gallery_image_per_page ) - 1;
+                                
+                            }
+
+                            // Lightbox
+                            $grid_gallery_lightBox = get_sub_field('optionAAGGallery_grid_subfield1_tab2', 'option');
+                            $grid_gallery_uniqueName = get_sub_field('optionAAGGallery_grid_subfield2_tab2', 'option');
+
                             // Class
                             $grid_gallery_class = get_sub_field('optionAAGGallery_grid_subfield5_tab2', 'option');
                             ?>
@@ -36,11 +61,36 @@ if(class_exists('ACF')){
                                     while ( have_rows('optionAAGGallery_grid_flexible_field1', 'option') ){
                                         the_row();
 
+                                        if($grid_gallery_ajaxload){
+                                            $grid_gallery_row++;
+                                            // Ignore this image if $row is lower than $min
+                                            if($grid_gallery_row < $grid_gallery_min) { 
+                                                continue; 
+                                            }
+
+                                            // Stop loop completely if $row is higher than $max
+                                            if($grid_gallery_row > $grid_gallery_max) { 
+                                                break; 
+                                            }
+                                        }
+
                                         if( get_row_layout() == 'optionAAGGallery_grid_flexible_layout1' ){
                                             $grid_image = get_sub_field('optionGallery_grid_layout1_subfield1', 'option');
                                             ?>
                                             <div class="aa-grid-gallery-list px-1 my-1 col-12 col-sm-6 col-md-4">
-                                                <img src="<?php echo $grid_image['url']; ?>" alt="<?php echo $grid_image['alt']; ?>" width="100%" height="100%"/>
+                                                <?php
+                                                if($grid_gallery_lightBox){
+                                                ?>
+                                                    <a class="venobox" data-gall="<?php echo $grid_gallery_uniqueName; ?>" href="<?php echo $grid_image['url']; ?>">
+                                                        <img src="<?php echo $grid_image['url']; ?>" alt="<?php echo $grid_image['alt']; ?>" width="100%" height="100%"/>
+                                                    </a>
+                                                <?php
+                                                }else{
+                                                    ?>
+                                                        <img src="<?php echo $grid_image['url']; ?>" alt="<?php echo $grid_image['alt']; ?>" width="100%" height="100%"/>
+                                                    <?php
+                                                }
+                                                ?>
                                             </div>
                                             <?php
                                         }
@@ -48,6 +98,43 @@ if(class_exists('ACF')){
                                 }
                                 ?>
                                 </div>
+                                <?php
+                                if($grid_gallery_ajaxload){
+                                    // Pagination
+                                    $grid_links = paginate_links( array(
+                                        'base' => get_permalink() . '%#%' . '/',
+                                        'format' => '?page=%#%',
+                                        'current' => $grid_gallery_page,
+                                        'total' => $grid_gallery_total_pages,
+                                        'type' => 'array',
+                                    ) );
+                                    echo '<div class="aa-grid-gallery-pagination" style="display:none;">';
+                                    foreach( $grid_links as $grid_link ){
+                                        echo $grid_link;
+                                    }
+                                    echo '</div>';
+                                ?>
+                                    <div class="aa-grid-gallery-load-status">
+                                        <div class="loader-ellips infinite-scroll-request">
+                                            <span class="loader-ellips__dot"></span>
+                                            <span class="loader-ellips__dot"></span>
+                                            <span class="loader-ellips__dot"></span>
+                                            <span class="loader-ellips__dot"></span>
+                                        </div>
+                                        <p class="infinite-scroll-last">No more images to show</p>
+                                        <p class="infinite-scroll-error">No more pages to load</p>
+                                    </div>
+
+                                <?php 
+                                    if($grid_gallery_total_items > $grid_gallery_image_per_page){
+                                ?>
+                                        <div class="aa-grid-gallery-viewmore-wrapper mt-3">
+                                            <button class="aa-grid-gallery-viewmore" data-index="aa-grid-gallery-count-<?php echo $count; ?>">View More</button>
+                                        </div>
+                                <?php
+                                    }
+                                }
+                                ?>
                             </div>
                             <?php
                         }
