@@ -100,9 +100,16 @@ if(class_exists('ACF')){
                                 </div>
                                 <?php
                                 if($grid_gallery_ajaxload){
+                                    // Paginate links base format
+                                    $base_format = '';
+                                    if(is_front_page()){
+                                        $base_format = get_permalink() . 'page/' . '%#%' . '/';
+                                    }else{
+                                        $base_format = get_permalink() . '%#%' . '/';
+                                    }
                                     // Pagination
                                     $grid_links = paginate_links( array(
-                                        'base' => get_permalink() . '%#%' . '/',
+                                        'base' => $base_format,
                                         'format' => '?page=%#%',
                                         'current' => $grid_gallery_page,
                                         'total' => $grid_gallery_total_pages,
