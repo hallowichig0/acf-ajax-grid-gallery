@@ -49,6 +49,10 @@ if(class_exists('ACF')){
 
                             // Class
                             $grid_gallery_class = get_sub_field('optionAAGGallery_grid_subfield5_tab2', 'option');
+
+                            // Button
+                            $ajax_buttonLabel = get_sub_field('optionAAGGallery_grid_ajax_buttonLabel_tab2');
+                            $ajax_buttonColor = get_sub_field('optionAAGGallery_grid_ajax_buttonColor_tab2');
                             ?>
                             <div data-index="aa-grid-gallery-count-<?php echo $count; ?>" class="aa-grid-gallery aa-grid-gallery-count-<?php echo $count; ?>">
                                 <div class="row aa-grid-gallery-row<?php 
@@ -134,9 +138,22 @@ if(class_exists('ACF')){
 
                                 <?php 
                                     if($grid_gallery_total_items > $grid_gallery_image_per_page){
+                                        
                                 ?>
                                         <div class="aa-grid-gallery-viewmore-wrapper mt-3">
-                                            <button class="aa-grid-gallery-viewmore" data-index="aa-grid-gallery-count-<?php echo $count; ?>">View More</button>
+                                            <button class="aa-grid-gallery-viewmore" data-index="aa-grid-gallery-count-<?php echo $count; ?>" style="background-color: <?php
+                                            if(!empty($ajax_buttonColor)){
+                                                echo $ajax_buttonColor.';';
+                                            }else{
+                                                echo '#23282d;';
+                                            }
+                                            ?>"><?php
+                                            if(!empty($ajax_buttonLabel)){
+                                                echo $ajax_buttonLabel;
+                                            }else{
+                                                echo 'View More';
+                                            }
+                                            ?></button>
                                         </div>
                                 <?php
                                     }

@@ -153,6 +153,47 @@ acf_add_local_field_group(array(
                     ),
                 ));
 
+                acf_add_local_field(array(
+                    'key'          => 'optionAAGGallery_grid_ajax_buttonLabel_tab2_key',
+                    'label'        => 'Button Label',
+                    'name'         => 'optionAAGGallery_grid_ajax_buttonLabel_tab2',
+                    'type'         => 'text',
+                    'parent'       => 'optionAAGGallery_main_flexible_field_key', //flexible field key
+                    'parent_layout'=> 'optionAAGGallery_main_flexible_layout1_key', // layout key
+                    'min'          => '1',
+                    'max'          => '12',
+                    'conditional_logic' => array(
+                        array(
+                            array(
+                                'field' => 'optionAAGGallery_grid_subfield3_tab2_key',
+                                'operator' => '==',
+                                'value' => '1',
+                            ),
+                        ),
+                    ),
+                ));
+
+                acf_add_local_field(array(
+                    'key'          => 'optionAAGGallery_grid_ajax_buttonColor_tab2_key',
+                    'label'        => 'Button Color',
+                    'instructions' => 'Select color of the button',
+                    'name'         => 'optionAAGGallery_grid_ajax_buttonColor_tab2',
+                    'type'         => 'color_picker',
+                    'parent'       => 'optionAAGGallery_main_flexible_field_key', //flexible field key
+                    'parent_layout'=> 'optionAAGGallery_main_flexible_layout1_key', // layout key
+                    'min'          => '1',
+                    'max'          => '12',
+                    'conditional_logic' => array(
+                        array(
+                            array(
+                                'field' => 'optionAAGGallery_grid_subfield3_tab2_key',
+                                'operator' => '==',
+                                'value' => '1',
+                            ),
+                        ),
+                    ),
+                ));
+
                 // Add Class
                 acf_add_local_field(array(
                     'key'          => 'optionAAGGallery_grid_subfield5_tab2_key',
