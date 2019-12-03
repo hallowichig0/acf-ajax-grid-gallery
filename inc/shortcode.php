@@ -2,7 +2,7 @@
 
 if(class_exists('ACF')){
     function acf_ajax_grid_gallery_shortcode($atts){
-
+        ob_start();
         $args = shortcode_atts(array(
             'id' => '',
         ), $atts);
@@ -166,7 +166,7 @@ if(class_exists('ACF')){
                 }
             }
         }
-        
+        return ob_get_clean();
     }
     add_shortcode('acf_ajax_grid_gallery', 'acf_ajax_grid_gallery_shortcode');
 }

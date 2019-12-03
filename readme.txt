@@ -55,3 +55,4 @@ Just like any other WordPress plugin, this plugin can also cause issues with oth
 
 = 1.2.0 =
 * [Features] Can change the label & background color of loadmore button
+* [Bugfix] Fixed the issue that doesn't wrap the shortcode within html tag.
