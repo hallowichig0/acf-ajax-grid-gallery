@@ -81,7 +81,7 @@ if(class_exists('ACF')){
                                         if( get_row_layout() == 'optionAAGGallery_grid_flexible_layout1' ){
                                             $grid_image = get_sub_field('optionGallery_grid_layout1_subfield1', 'option');
                                             ?>
-                                            <div class="aa-grid-gallery-list px-1 my-1 col-12 col-sm-6 col-md-4">
+                                            <div class="aa-grid-gallery-list">
                                                 <?php
                                                 if($grid_gallery_lightBox){
                                                 ?>
