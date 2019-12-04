@@ -27,12 +27,12 @@ add_action('init', 'acf_ajax_grid_gallery');
 function acf_ajax_grid_gallery_enqueue() {
 
     // styles
-    wp_enqueue_style( 'venobox-style', AAGG__PLUGIN_URL . '/assets/venobox/venobox/venobox.css' );
+    wp_enqueue_style( 'venobox-style', AAGG__PLUGIN_URL . '/assets/venobox/venobox.css' );
     wp_enqueue_style( 'aagg-style', AAGG__PLUGIN_URL . 'acf_ajax_grid_gallery.css' );
 
     // scripts
-    wp_enqueue_script( 'venobox-script', AAGG__PLUGIN_URL . '/assets/venobox/venobox/venobox.min.js','','',true  );
-    wp_enqueue_script( 'infinite-scroll-js', AAGG__PLUGIN_URL . '/assets/infinite-scroll/dist/infinite-scroll.pkgd.min.js','','',true );
+    wp_enqueue_script( 'venobox-script', AAGG__PLUGIN_URL . '/assets/venobox/venobox.min.js','','',true  );
+    wp_enqueue_script( 'infinite-scroll-js', AAGG__PLUGIN_URL . '/assets/infinite-scroll/infinite-scroll.pkgd.min.js','','',true );
     wp_enqueue_script( 'aagg-js', AAGG__PLUGIN_URL . '/js/acf_ajax_grid_gallery.js','','',true );
 
 }
