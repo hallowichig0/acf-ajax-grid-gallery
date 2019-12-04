@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: ACF Ajax Grid Gallery
- * Plugin URI: http://jegson.herokuapp.com
+ * Plugin URI: https://wordpress.org/plugins/acf-ajax-grid-gallery/
  * Description: An extension for Advance Custom Fields Pro which lets you add multiple grid gallery with lightbox and ajax loadmore setting.
  * Version: 1.2.0
  * Author: Jayson Garcia (Github - hallowichig0)
