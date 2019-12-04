@@ -43,7 +43,7 @@ Just like any other WordPress plugin, this plugin can also cause issues with oth
 == Installation ==
 
 1. Copy the `acf-ajax-grid-gallery` folder into your `wp-content/plugins` folder
-2. Activate the Advanced Custom Fields: Photo Gallery plugin via the plugins admin page
+2. Activate the ACF Ajax Grid Gallery plugin via the plugins admin page
 3. Please refer to the description for more info regarding the field type settings
 
 == Changelog ==
