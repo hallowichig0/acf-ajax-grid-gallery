@@ -2,7 +2,8 @@
     $(document).ready(function(){
         /* VenoBox LightBox */
         $('.venobox').venobox({
-            closeBackground: '#23282d',
+            titleattr: 'data-title',
+            numeratio: true,
         });
 
         // infinite scroll dynamic
@@ -15,7 +16,7 @@
 
                 $(this).on( 'click', function() {
 
-                    var dataindex = $(this).attr('data-index'); 
+                    var dataindex = $(this).attr('data-index');
                     
                     var $grid_container = maincontent.infiniteScroll({
                         // options

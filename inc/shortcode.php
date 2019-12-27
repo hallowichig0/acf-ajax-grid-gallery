@@ -46,6 +46,7 @@ if(class_exists('ACF') && class_exists('acf_field_flexible_content')){
                             // Lightbox
                             $grid_gallery_lightBox = get_sub_field('optionAAGGallery_grid_subfield1_tab2', 'option');
                             $grid_gallery_uniqueName = get_sub_field('optionAAGGallery_grid_subfield2_tab2', 'option');
+                            $grid_gallery_lightboxTitle = get_sub_field('optionAAGGallery_grid_lightbox_title_tab2_key', 'option');
 
                             // Class
                             $grid_gallery_class = get_sub_field('optionAAGGallery_grid_subfield5_tab2', 'option');
@@ -85,7 +86,7 @@ if(class_exists('ACF') && class_exists('acf_field_flexible_content')){
                                                 <?php
                                                 if($grid_gallery_lightBox){
                                                 ?>
-                                                    <a class="venobox" data-gall="<?php echo $grid_gallery_uniqueName; ?>" href="<?php echo $grid_image['url']; ?>">
+                                                    <a class="venobox" <?php echo ($grid_gallery_lightboxTitle) ? 'data-title='.$grid_image['title'] : ''; ?> data-gall="<?php echo $grid_gallery_uniqueName; ?>" href="<?php echo $grid_image['url']; ?>">
                                                         <img src="<?php echo $grid_image['url']; ?>" alt="<?php echo $grid_image['alt']; ?>" width="100%" height="100%"/>
                                                     </a>
                                                 <?php

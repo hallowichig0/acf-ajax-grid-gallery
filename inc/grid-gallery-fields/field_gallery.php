@@ -90,6 +90,7 @@ acf_add_local_field_group(array(
                     'parent_layout' => 'optionAAGGallery_main_flexible_layout1_key',
                 ));
 
+                // Enable Lightbox
                 acf_add_local_field(array(
                     'key'          => 'optionAAGGallery_grid_subfield1_tab2_key',
                     'label'        => 'Switch Lightbox',
@@ -99,7 +100,8 @@ acf_add_local_field_group(array(
                     'parent'       => 'optionAAGGallery_main_flexible_field_key', //flexible field key
                     'parent_layout'=> 'optionAAGGallery_main_flexible_layout1_key', // layout key
                 ));
-
+                
+                // Lightbox Unique Name
                 acf_add_local_field(array(
                     'key'          => 'optionAAGGallery_grid_subfield2_tab2_key',
                     'label'        => 'Add Unique Name',
@@ -118,6 +120,27 @@ acf_add_local_field_group(array(
                     ),
                     'parent'       => 'optionAAGGallery_main_flexible_field_key', //flexible field key
                     'parent_layout'=> 'optionAAGGallery_main_flexible_layout1_key', // layout key
+                ));
+
+                // Lightbox Title
+                acf_add_local_field(array(
+                    'key'           => 'optionAAGGallery_grid_lightbox_title_tab2_key',
+                    'label'         => 'Lightbox Title',
+                    'instructions'  => 'Show the title for each images in lightbox',
+                    'name'          => 'optionAAGGallery_grid_lightbox_title_tab2_key',
+                    'type'          => 'true_false',
+                    'default_value' => '1',
+                    'parent'        => 'optionAAGGallery_main_flexible_field_key', //flexible field key
+                    'parent_layout' => 'optionAAGGallery_main_flexible_layout1_key', // layout key
+                    'conditional_logic' => array(
+                        array(
+                            array(
+                                'field'     => 'optionAAGGallery_grid_subfield1_tab2_key',
+                                'operator'  => '==',
+                                'value'     => '1',
+                            ),
+                        ),
+                    ),
                 ));
 
                 // Infinite Scroll Ajax

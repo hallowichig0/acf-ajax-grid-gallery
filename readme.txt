@@ -2,8 +2,8 @@
 Contributors: hallowichig0
 Tags: acf, advanced, custom, flexible content, photo, gallery, lightbox, ajax
 Requires at least: 3.8
-Tested up to: 5.2.1
-Stable tag: 1.2.0
+Tested up to: 5.3
+Stable tag: 1.2.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -57,3 +57,7 @@ Just like any other WordPress plugin, this plugin can also cause issues with oth
 * [Features] Can change the label & background color of loadmore button
 * [Bugfix] Fixed the issue that doesn't wrap the shortcode within html tag.
 * [Remove] Removed redundant class.
+
+= 1.2.5 =
+* [Features] Can enable/disable lightbox title
+* [Modify] Modify lightbox
