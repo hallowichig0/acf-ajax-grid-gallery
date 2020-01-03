@@ -146,8 +146,8 @@ acf_add_local_field_group(array(
                 // Lightbox Spinner
                 acf_add_local_field(array(
                     'key'           => 'optionAAGGallery_grid_lightbox_spinner_tab2_key',
-                    'label'         => 'Spinner',
-                    'instructions'  => 'Loader animation',
+                    'label'         => 'Lightbox Spinner',
+                    'instructions'  => 'Loader animation for lightbox',
                     'name'          => 'optionAAGGallery_grid_lightbox_spinner_tab2',
                     'type'          => 'select',
                     'default_value' => 'double-bounce',
@@ -206,6 +206,7 @@ acf_add_local_field_group(array(
                     ),
                 ));
 
+                // Infinite Scroll Button Label
                 acf_add_local_field(array(
                     'key'          => 'optionAAGGallery_grid_ajax_buttonLabel_tab2_key',
                     'label'        => 'Button Label',
@@ -226,6 +227,7 @@ acf_add_local_field_group(array(
                     ),
                 ));
 
+                // Infinite Scroll Button Color
                 acf_add_local_field(array(
                     'key'          => 'optionAAGGallery_grid_ajax_buttonColor_tab2_key',
                     'label'        => 'Button Color',
@@ -242,6 +244,31 @@ acf_add_local_field_group(array(
                                 'field' => 'optionAAGGallery_grid_subfield3_tab2_key',
                                 'operator' => '==',
                                 'value' => '1',
+                            ),
+                        ),
+                    ),
+                ));
+
+                // Infinite Scroll Spinner
+                acf_add_local_field(array(
+                    'key'           => 'optionAAGGallery_grid_ajax_spinner_tab2_key',
+                    'label'         => 'Ajax Loadmore Spinner',
+                    'instructions'  => 'Loader animation for ajax loadmore',
+                    'name'          => 'optionAAGGallery_grid_ajax_spinner_tab2',
+                    'type'          => 'select',
+                    'default_value' => 'spinner1',
+                    'parent'        => 'optionAAGGallery_main_flexible_field_key', //flexible field key
+                    'parent_layout' => 'optionAAGGallery_main_flexible_layout1_key', // layout key
+                    'choices'       => array(
+                        'spinner1'    => 'Loader Ellips',
+                        'spinner2'    => 'Loader Wheel',
+                    ),
+                    'conditional_logic' => array(
+                        array(
+                            array(
+                                'field'     => 'optionAAGGallery_grid_subfield3_tab2_key',
+                                'operator'  => '==',
+                                'value'     => '1',
                             ),
                         ),
                     ),

@@ -52,9 +52,10 @@ if(class_exists('ACF') && class_exists('acf_field_flexible_content')){
                             // Class
                             $grid_gallery_class = get_sub_field('optionAAGGallery_grid_subfield5_tab2', 'option');
 
-                            // Button
-                            $ajax_buttonLabel = get_sub_field('optionAAGGallery_grid_ajax_buttonLabel_tab2');
-                            $ajax_buttonColor = get_sub_field('optionAAGGallery_grid_ajax_buttonColor_tab2');
+                            // Ajax Loadmore
+                            $ajax_buttonLabel = get_sub_field('optionAAGGallery_grid_ajax_buttonLabel_tab2', 'option');
+                            $ajax_buttonColor = get_sub_field('optionAAGGallery_grid_ajax_buttonColor_tab2', 'option');
+                            $ajax_spinner = get_sub_field('optionAAGGallery_grid_ajax_spinner_tab2', 'option');
                             ?>
                             <div data-index="aa-grid-gallery-count-<?php echo $count; ?>" data-loadspinner="<?php echo esc_attr($grid_gallery_lightboxSpinner['value']); ?>"
                             class="aa-grid-gallery aa-grid-gallery-count-<?php echo $count; ?>">
@@ -129,12 +130,19 @@ if(class_exists('ACF') && class_exists('acf_field_flexible_content')){
                                     echo '</div>';
                                 ?>
                                     <div class="aa-grid-gallery-load-status">
+                                        <?php if($ajax_spinner == 'spinner1'){ ?>
                                         <div class="loader-ellips infinite-scroll-request">
                                             <span class="loader-ellips__dot"></span>
                                             <span class="loader-ellips__dot"></span>
                                             <span class="loader-ellips__dot"></span>
                                             <span class="loader-ellips__dot"></span>
                                         </div>
+                                        <?php }else{ ?>
+                                        <div class="loader-wheel infinite-scroll-request">
+                                            <i><i><i><i><i><i><i><i><i><i><i><i>
+                                            </i></i></i></i></i></i></i></i></i></i></i></i>
+                                        </div>
+                                        <?php } ?>
                                         <p class="infinite-scroll-last">No more images to show</p>
                                         <p class="infinite-scroll-error">No more pages to load</p>
                                     </div>
