@@ -1,16 +1,36 @@
 (function( $ ){
-    $(document).ready(function(){
-        /* VenoBox LightBox */
-        $('.venobox').venobox({
+    function aa_grid_gallery_lightbox(settings){
+        var lightbox = $('.aa-grid-gallery-lightbox');
+        var defaults = {
+            name: lightbox,
+            spinner: 'double-bounce',
+        };
+        var options = $.extend(defaults,settings);
+        var spinner_loader = options['spinner'];
+        var venoOptions = {
             titleattr: 'data-title',
             numeratio: true,
-        });
+            spinner: spinner_loader,
+        };
+        var venoBox = options['name'];
+        venoBox.venobox(venoOptions);
+    }
+    $(document).ready(function(){
 
         // infinite scroll dynamic
         $('.aa-grid-gallery').each(function(){
             var tis_gal = $(this);
             var maincontent = tis_gal.find('.aa-grid-gallery-row');
             var viewMoreButton = tis_gal.find('.aa-grid-gallery-viewmore');
+
+            // lightbox
+            var lightBox = $('.aa-grid-gallery-lightbox');
+            var venoBox = tis_gal.find(lightBox);
+            var loadspinner = tis_gal.attr('data-loadspinner');
+            aa_grid_gallery_lightbox({
+                name: venoBox,
+                spinner: loadspinner,
+            });
 
             viewMoreButton.each(function(){
 
@@ -31,20 +51,11 @@
                     });
 
                     $grid_container.on( 'append.infiniteScroll', function( event, response, path, items ) {
-
-                        $(this).each(function(){
-                            var tis = $(this);
-                            var progmedia = tis.find('.progressiveMedia');
-                            var width = progmedia.attr('data-width');
-                            var height = progmedia.attr('data-height');
-                            var fill = height / width * 100;
-                            var placeholderFill = tis.find('.aspectRatioPlaceholder-fill');
-                            placeholderFill.attr('style', 'padding-bottom:'+fill+'%;');
-                        });
-
-                        /* VenoBox LightBox */
-                        $('.venobox').venobox({
-                            closeBackground: '#23282d',
+                        // re-enable lightBox after loadmore
+                        var relightBox = $(this).find($('.aa-grid-gallery-lightbox'));
+                        aa_grid_gallery_lightbox({
+                            name: relightBox,
+                            spinner: loadspinner,
                         });
                     });
 

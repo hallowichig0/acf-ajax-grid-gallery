@@ -127,11 +127,41 @@ acf_add_local_field_group(array(
                     'key'           => 'optionAAGGallery_grid_lightbox_title_tab2_key',
                     'label'         => 'Lightbox Title',
                     'instructions'  => 'Show the title for each images in lightbox',
-                    'name'          => 'optionAAGGallery_grid_lightbox_title_tab2_key',
+                    'name'          => 'optionAAGGallery_grid_lightbox_title_tab2',
                     'type'          => 'true_false',
                     'default_value' => '1',
                     'parent'        => 'optionAAGGallery_main_flexible_field_key', //flexible field key
                     'parent_layout' => 'optionAAGGallery_main_flexible_layout1_key', // layout key
+                    'conditional_logic' => array(
+                        array(
+                            array(
+                                'field'     => 'optionAAGGallery_grid_subfield1_tab2_key',
+                                'operator'  => '==',
+                                'value'     => '1',
+                            ),
+                        ),
+                    ),
+                ));
+
+                // Lightbox Spinner
+                acf_add_local_field(array(
+                    'key'           => 'optionAAGGallery_grid_lightbox_spinner_tab2_key',
+                    'label'         => 'Spinner',
+                    'instructions'  => 'Loader animation',
+                    'name'          => 'optionAAGGallery_grid_lightbox_spinner_tab2',
+                    'type'          => 'select',
+                    'default_value' => 'double-bounce',
+                    'parent'        => 'optionAAGGallery_main_flexible_field_key', //flexible field key
+                    'parent_layout' => 'optionAAGGallery_main_flexible_layout1_key', // layout key
+                    'choices'       => array(
+                        'rotating-plane'    => 'Rotating Plane',
+                        'double-bounce'     => 'Double Bounce',
+                        'wave'              => 'Wave',
+                        'wandering-cubes'   => 'Wandering Cubes',
+                        'spinner-pulse'     => 'Spinner Pulse',
+                        'three-bounce'      => 'Three Bounce',
+                        'cube-grid'         => 'Cube Grid',
+                    ),
                     'conditional_logic' => array(
                         array(
                             array(

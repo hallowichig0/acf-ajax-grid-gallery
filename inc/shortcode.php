@@ -46,7 +46,8 @@ if(class_exists('ACF') && class_exists('acf_field_flexible_content')){
                             // Lightbox
                             $grid_gallery_lightBox = get_sub_field('optionAAGGallery_grid_subfield1_tab2', 'option');
                             $grid_gallery_uniqueName = get_sub_field('optionAAGGallery_grid_subfield2_tab2', 'option');
-                            $grid_gallery_lightboxTitle = get_sub_field('optionAAGGallery_grid_lightbox_title_tab2_key', 'option');
+                            $grid_gallery_lightboxTitle = get_sub_field('optionAAGGallery_grid_lightbox_title_tab2', 'option');
+                            $grid_gallery_lightboxSpinner = get_sub_field_object('optionAAGGallery_grid_lightbox_spinner_tab2', 'option');
 
                             // Class
                             $grid_gallery_class = get_sub_field('optionAAGGallery_grid_subfield5_tab2', 'option');
@@ -55,7 +56,8 @@ if(class_exists('ACF') && class_exists('acf_field_flexible_content')){
                             $ajax_buttonLabel = get_sub_field('optionAAGGallery_grid_ajax_buttonLabel_tab2');
                             $ajax_buttonColor = get_sub_field('optionAAGGallery_grid_ajax_buttonColor_tab2');
                             ?>
-                            <div data-index="aa-grid-gallery-count-<?php echo $count; ?>" class="aa-grid-gallery aa-grid-gallery-count-<?php echo $count; ?>">
+                            <div data-index="aa-grid-gallery-count-<?php echo $count; ?>" data-loadspinner="<?php echo esc_attr($grid_gallery_lightboxSpinner['value']); ?>"
+                            class="aa-grid-gallery aa-grid-gallery-count-<?php echo $count; ?>">
                                 <div class="row aa-grid-gallery-row<?php 
                                 if(!empty($grid_gallery_class)){
                                     echo ' ' . $grid_gallery_class;
@@ -86,7 +88,7 @@ if(class_exists('ACF') && class_exists('acf_field_flexible_content')){
                                                 <?php
                                                 if($grid_gallery_lightBox){
                                                 ?>
-                                                    <a class="venobox" <?php echo ($grid_gallery_lightboxTitle) ? 'data-title='.$grid_image['title'] : ''; ?> data-gall="<?php echo $grid_gallery_uniqueName; ?>" href="<?php echo $grid_image['url']; ?>">
+                                                    <a class="aa-grid-gallery-lightbox" <?php echo ($grid_gallery_lightboxTitle) ? 'data-title='.$grid_image['title'] : ''; ?> data-gall="<?php echo $grid_gallery_uniqueName; ?>" href="<?php echo $grid_image['url']; ?>">
                                                         <img src="<?php echo $grid_image['url']; ?>" alt="<?php echo $grid_image['alt']; ?>" width="100%" height="100%"/>
                                                     </a>
                                                 <?php
