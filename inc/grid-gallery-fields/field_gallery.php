@@ -274,6 +274,22 @@ acf_add_local_field_group(array(
                     ),
                 ));
 
+                // Number of column
+                acf_add_local_field(array(
+                    'key'           => 'optionAAGGallery_grid_ajax_column_tab2_key',
+                    'label'         => 'Column',
+                    'instructions'  => 'Select how many columns will display per row',
+                    'name'          => 'optionAAGGallery_grid_ajax_column_tab2',
+                    'type'          => 'select',
+                    'default_value' => 'column3',
+                    'parent'        => 'optionAAGGallery_main_flexible_field_key', //flexible field key
+                    'parent_layout' => 'optionAAGGallery_main_flexible_layout1_key', // layout key
+                    'choices'       => array(
+                        'column2'    => '2',
+                        'column3'    => '3',
+                    ),
+                ));
+
                 // Add Class
                 acf_add_local_field(array(
                     'key'          => 'optionAAGGallery_grid_subfield5_tab2_key',

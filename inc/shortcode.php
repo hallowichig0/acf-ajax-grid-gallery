@@ -56,6 +56,9 @@ if(class_exists('ACF') && class_exists('acf_field_flexible_content')){
                             $ajax_buttonLabel = get_sub_field('optionAAGGallery_grid_ajax_buttonLabel_tab2', 'option');
                             $ajax_buttonColor = get_sub_field('optionAAGGallery_grid_ajax_buttonColor_tab2', 'option');
                             $ajax_spinner = get_sub_field('optionAAGGallery_grid_ajax_spinner_tab2', 'option');
+
+                            // Number of column per row
+                            $grid_gallery_column = get_sub_field('optionAAGGallery_grid_ajax_column_tab2', 'option');
                             ?>
                             <div data-index="aa-grid-gallery-count-<?php echo $count; ?>" data-loadspinner="<?php echo esc_attr($grid_gallery_lightboxSpinner['value']); ?>"
                             class="aa-grid-gallery aa-grid-gallery-count-<?php echo $count; ?>">
@@ -85,7 +88,13 @@ if(class_exists('ACF') && class_exists('acf_field_flexible_content')){
                                         if( get_row_layout() == 'optionAAGGallery_grid_flexible_layout1' ){
                                             $grid_image = get_sub_field('optionGallery_grid_layout1_subfield1', 'option');
                                             ?>
-                                            <div class="aa-grid-gallery-list">
+                                            <div class="aa-grid-gallery-list <?php
+                                            if($grid_gallery_column == 'column3'){
+                                                echo 'aa-grid-gallery-column-3';
+                                            }else{
+                                                echo 'aa-grid-gallery-column-2';
+                                            }
+                                            ?>">
                                                 <?php
                                                 if($grid_gallery_lightBox){
                                                 ?>
